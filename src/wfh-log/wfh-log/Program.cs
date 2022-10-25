@@ -1,29 +1,46 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Work from Home Log");
+﻿using ManagedNativeWifi;
 
-var workFromHomeSSID = "";
-
-if (args.Length > 0)
+internal class Program
 {
-    Console.WriteLine($"Work from home SSID: {args[0]}");
-    workFromHomeSSID = args[0];
-}
+    private static void Main(string[] args)
+    {
+        Console.WriteLine("Work from Home Log");
 
-// start loop
-var timer = new System.Timers.Timer(5000); // 5 second interval
-timer.Elapsed += Timer_Elapsed;
-timer.Enabled = true;
-timer.AutoReset = true;
+        var workFromHomeSSID = "Dylan's Pad 🐇";
 
-Console.ReadLine();
+        if (args.Length > 0)
+        {
+            Console.WriteLine($"Work from home SSID: {args[0]}");
+            workFromHomeSSID = args[0];
+        }
 
-void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-{
-    Console.WriteLine("Timer elapsed at {0:HH:mm:ss.fff}", e.SignalTime);
+        // start loop
+        var timer = new System.Timers.Timer(5000); // 5 second interval
+        timer.Elapsed += Timer_Elapsed;
+        timer.Enabled = true;
+        timer.AutoReset = true;
 
-    // check if 9-5 
+        Console.ReadLine();
 
-    // get network ssid and compare
+        void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        {
+            Console.WriteLine("Timer elapsed at {0:HH:mm:ss.fff}", e.SignalTime);
 
-    // log
+            var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
+
+            if (!connectedNetworkSsids.Any())
+                return;
+
+            var currentNetwork = connectedNetworkSsids.First();
+
+            Console.WriteLine(currentNetwork);
+
+            var isWorkingFromHome = currentNetwork.ToString() == workFromHomeSSID;
+
+            if (isWorkingFromHome)
+                Console.WriteLine("You are working from home");
+            else
+                Console.WriteLine("You are not working from home");
+        }
+    }
 }
