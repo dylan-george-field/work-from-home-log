@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wfh-log", "wfh-log\wfh-log.csproj", "{B71EF8BF-9DD2-420E-8E9B-D7E591EE4ACC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B71EF8BF-9DD2-420E-8E9B-D7E591EE4ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71EF8BF-9DD2-420E-8E9B-D7E591EE4ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71EF8BF-9DD2-420E-8E9B-D7E591EE4ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71EF8BF-9DD2-420E-8E9B-D7E591EE4ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7DADA76E-FE5A-4DCD-A410-EEEB73A59D3A}
+	EndGlobalSection
+EndGlobal
