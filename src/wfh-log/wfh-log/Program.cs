@@ -1,4 +1,10 @@
 ﻿using ManagedNativeWifi;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NLog;
+using NLog.Extensions.Logging;
+using wfh_log;
 
 internal class Program
 {
@@ -6,41 +12,41 @@ internal class Program
     {
         Console.WriteLine("Work from Home Log");
 
-        var workFromHomeSSID = "Dylan's Pad 🐇";
-
-        if (args.Length > 0)
+        var logger = LogManager.GetCurrentClassLogger();
+        try
         {
-            Console.WriteLine($"Work from home SSID: {args[0]}");
-            workFromHomeSSID = args[0];
+            var config = new ConfigurationBuilder()
+               .SetBasePath(System.IO.Directory.GetCurrentDirectory()) //From NuGet Package Microsoft.Extensions.Configuration.Json
+               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+               .Build();
+
+            using var servicesProvider = new ServiceCollection()
+                .AddTransient<Runner>() // Runner is the custom class
+                .AddLogging(loggingBuilder =>
+                {
+                    // configure Logging with NLog
+                    loggingBuilder.ClearProviders();
+                    loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                    loggingBuilder.AddNLog(config);
+                }).BuildServiceProvider();
+
+            var runner = servicesProvider.GetRequiredService<Runner>();
+
+            runner.Run(args);
+
+            Console.WriteLine("Press ANY key to exit");
+            Console.ReadKey();
         }
-
-        // start loop
-        var timer = new System.Timers.Timer(5000); // 5 second interval
-        timer.Elapsed += Timer_Elapsed;
-        timer.Enabled = true;
-        timer.AutoReset = true;
-
-        Console.ReadLine();
-
-        void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        catch (Exception ex)
         {
-            Console.WriteLine("Timer elapsed at {0:HH:mm:ss.fff}", e.SignalTime);
-
-            var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
-
-            if (!connectedNetworkSsids.Any())
-                return;
-
-            var currentNetwork = connectedNetworkSsids.First();
-
-            Console.WriteLine(currentNetwork);
-
-            var isWorkingFromHome = currentNetwork.ToString() == workFromHomeSSID;
-
-            if (isWorkingFromHome)
-                Console.WriteLine("You are working from home");
-            else
-                Console.WriteLine("You are not working from home");
+            // NLog: catch any exception and log it.
+            logger.Error(ex, "Stopped program because of exception");
+            throw;
+        }
+        finally
+        {
+            // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
+            LogManager.Shutdown();
         }
     }
 }
