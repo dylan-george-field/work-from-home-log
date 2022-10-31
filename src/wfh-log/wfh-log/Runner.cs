@@ -25,7 +25,7 @@ namespace wfh_log
             }
 
             // start loop
-            var oneHourInMilliseconds = 60000;
+            var oneHourInMilliseconds = 3600000;
             var timer = new System.Timers.Timer(oneHourInMilliseconds);
             timer.Elapsed += Timer_Elapsed;
             timer.Enabled = true;
