@@ -25,7 +25,8 @@ namespace wfh_log
             }
 
             // start loop
-            var timer = new System.Timers.Timer(5000); // 5 second interval
+            var oneHourInMilliseconds = 60000;
+            var timer = new System.Timers.Timer(oneHourInMilliseconds);
             timer.Elapsed += Timer_Elapsed;
             timer.Enabled = true;
             timer.AutoReset = true;
