@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wfh-log-wpf", "wfh-log-wpf\wfh-log-wpf.csproj", "{42CD2685-0179-4879-945C-64CC44432123}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42CD2685-0179-4879-945C-64CC44432123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42CD2685-0179-4879-945C-64CC44432123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42CD2685-0179-4879-945C-64CC44432123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42CD2685-0179-4879-945C-64CC44432123}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {859ECAE8-1923-4CE1-9EB1-DE74B4434C4E}
+	EndGlobalSection
+EndGlobal
