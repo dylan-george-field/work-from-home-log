@@ -24,6 +24,8 @@ namespace wfh_log
                 workFromHomeSSID = args[0];
             }
 
+            LogWorkingFromHomeStatus();
+
             // start loop
             var oneHourInMilliseconds = 3600000;
             var timer = new System.Timers.Timer(oneHourInMilliseconds);
@@ -37,6 +39,11 @@ namespace wfh_log
             {
                 _logger.LogInformation("Timer elapsed at {0:HH:mm:ss.fff}", e.SignalTime);
 
+                LogWorkingFromHomeStatus();
+            }
+
+            void LogWorkingFromHomeStatus()
+            {
                 var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
 
                 if (!connectedNetworkSsids.Any())
@@ -52,7 +59,6 @@ namespace wfh_log
                     _logger.LogInformation("You are working from home");
                 else
                     _logger.LogInformation("You are not working from home");
-
             }
         }
     }
