@@ -5,12 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wfh_log_wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Wfh-log" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="429*"/>
-            <ColumnDefinition Width="371*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#2f5cb6"/>
+        <Border Grid.Column ="1" Background="#1f3d7a"/>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#152951"/>
+        <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
+            <TextBlock Foreground="White" FontSize="25" Text="Dylan's Pad 🐇"/>
+            <TextBlock Foreground="White" FontSize="25" Text="You're at home"/>
+            <TextBlock Foreground="White" FontSize="25" Text="It's outside work hours"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Foreground="White" FontSize="25" Text="250 hours" Margin="0,0,20,0"/>
+            <TextBlock Foreground="White" FontSize="25" Text="10 minutes" Margin="0,0,20,0"/>
+            <TextBlock Foreground="White" FontSize="25" Text="1 seconds" Margin="0,0,20,0"/>
+        </StackPanel>
     </Grid>
 </Window>
