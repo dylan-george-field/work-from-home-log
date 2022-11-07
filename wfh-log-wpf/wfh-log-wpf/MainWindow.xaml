@@ -22,8 +22,8 @@
             <TextBlock Foreground="White" FontSize="25" Text="-"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
-            <TextBlock Foreground="White" FontSize="25" Text="Dylan's Pad 🐇"/>
-            <TextBlock Foreground="White" FontSize="25" Text="You're at home"/>
+            <TextBlock Name="myTarget" Foreground="White" FontSize="25" Text="{Binding}"/>
+            <TextBlock Foreground="White" FontSize="25" Text="You are at home"/>
             <TextBlock Foreground="White" FontSize="25" Text="It's outside work hours"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"

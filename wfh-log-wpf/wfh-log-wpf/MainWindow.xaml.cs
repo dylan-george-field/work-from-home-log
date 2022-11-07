@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -27,12 +26,26 @@ namespace wfh_log_wpf
             InitializeComponent();
 
             Closing += MainWindow_Closing;
-        }
+
+            var network = new NetworkInformation();
+            network.ConnectedNetworkSsid = "Dylan's Pad 🐇!!!";
+
+            var binding = new Binding("ConnectedNetworkSsid");
+            binding.Mode = BindingMode.OneWay;
+            binding.Source = network;
+
+            BindingOperations.SetBinding(myTarget, TextBlock.TextProperty, binding);
+    }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
                 e.Cancel = true;
                 Hide(); // A hidden window can be shown again, a closed one not
         }
+    }
+
+    public class NetworkInformation
+    {
+        public string ConnectedNetworkSsid { get; set; } = "No network";
     }
 }
