@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManagedNativeWifi;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -27,8 +28,15 @@ namespace wfh_log_wpf
 
             Closing += MainWindow_Closing;
 
+            var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
+
+            if (!connectedNetworkSsids.Any())
+                return;
+
+            var currentNetwork = connectedNetworkSsids.First();
+
             var network = new NetworkInformation();
-            network.ConnectedNetworkSsid = "Dylan's Pad 🐇!!!";
+            network.ConnectedNetworkSsid = currentNetwork.ToString();
 
             var binding = new Binding("ConnectedNetworkSsid");
             binding.Mode = BindingMode.OneWay;
