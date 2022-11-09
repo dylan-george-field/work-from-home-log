@@ -22,9 +22,9 @@
             <TextBlock Foreground="White" FontSize="25" Text="-"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
-            <TextBlock Name="myTarget" Foreground="White" FontSize="25" Text="{Binding}"/>
-            <TextBlock Foreground="White" FontSize="25" Text="You are at home"/>
-            <TextBlock Foreground="White" FontSize="25" Text="It's outside work hours"/>
+            <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="{Binding Path=ConnectedNetworkSsid, Mode=TwoWay}" />
+            <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="25" Text="{Binding Path=WorkFromHomeStatus, Mode=TwoWay}"/>
+            <TextBlock Name="WorkHoursStatus" Foreground="White" FontSize="25" Text="{Binding Path=WorkHoursStatus, Mode=TwoWay}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
             HorizontalAlignment="Center" VerticalAlignment="Center">

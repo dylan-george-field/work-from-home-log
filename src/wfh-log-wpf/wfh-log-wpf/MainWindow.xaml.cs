@@ -35,15 +35,16 @@ namespace wfh_log_wpf
 
             var currentNetwork = connectedNetworkSsids.First();
 
-            var network = new NetworkInformation();
-            network.ConnectedNetworkSsid = currentNetwork.ToString();
+            var network = new NetworkInformation
+            {
+                ConnectedNetworkSsid = currentNetwork.ToString(),
+            };
 
-            var binding = new Binding("ConnectedNetworkSsid");
-            binding.Mode = BindingMode.OneWay;
-            binding.Source = network;
+            ConnectedNetworkSsid.DataContext = network;
+            WorkFromHomeStatus.DataContext = network;
+            WorkHoursStatus.DataContext = network;
 
-            BindingOperations.SetBinding(myTarget, TextBlock.TextProperty, binding);
-    }
+        }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
@@ -55,5 +56,8 @@ namespace wfh_log_wpf
     public class NetworkInformation
     {
         public string ConnectedNetworkSsid { get; set; } = "No network";
+        public string HomeNetwork = "Dylan's Pad 🐇";
+        public string WorkFromHomeStatus { get; set; } = "You are at home";
+        public string WorkHoursStatus { get; set; } = "It's outside work hours";
     }
 }
