@@ -40,6 +40,12 @@ namespace wfh_log_wpf
                 ConnectedNetworkSsid = currentNetwork.ToString(),
             };
 
+            if (currentNetwork.ToString() == network.HomeNetwork)
+                network.WorkFromHomeStatus = "You are working from home";
+            else
+                network.WorkFromHomeStatus = "You are not working from home";
+
+
             ConnectedNetworkSsid.DataContext = network;
             WorkFromHomeStatus.DataContext = network;
             WorkHoursStatus.DataContext = network;
@@ -57,7 +63,7 @@ namespace wfh_log_wpf
     {
         public string ConnectedNetworkSsid { get; set; } = "No network";
         public string HomeNetwork = "Dylan's Pad 🐇";
-        public string WorkFromHomeStatus { get; set; } = "You are at home";
+        public string WorkFromHomeStatus { get; set; } = "You are not working from home";
         public string WorkHoursStatus { get; set; } = "It's outside work hours";
     }
 }
