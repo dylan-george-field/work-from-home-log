@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="ManagedNativeWifi" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

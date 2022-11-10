@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -16,6 +17,10 @@ namespace wfh_log_wpf
     {
         private System.Windows.Forms.NotifyIcon _notifyIcon;
         private bool _isExit;
+
+        public App()
+        {
+        }
 
         protected override void OnStartup(StartupEventArgs e)
         {
