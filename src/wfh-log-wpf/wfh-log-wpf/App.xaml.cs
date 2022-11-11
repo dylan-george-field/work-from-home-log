@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
@@ -10,6 +11,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using wfh_log_wpf.Models;
 
 namespace wfh_log_wpf
 {
@@ -25,14 +27,25 @@ namespace wfh_log_wpf
 
         public App()
         {
-            _host = Host.CreateDefaultBuilder().ConfigureServices((hostContext, services) =>
+            _host = Host.CreateDefaultBuilder()
+            .ConfigureServices((hostContext, services) =>
             {
+                var configrurationRoot = hostContext.Configuration;
+                services.Configure<Settings>(configrurationRoot.GetSection(nameof(Settings)));
                 services.AddSingleton<MainWindow>();
-            }).ConfigureLogging(logBuilder =>
+            })
+            .ConfigureAppConfiguration((context, configurationBuilder) =>
+            {
+                configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath);
+                configurationBuilder.AddJsonFile("appsettings.json");
+
+            })
+            .ConfigureLogging(logBuilder =>
             {
                 logBuilder.SetMinimumLevel(LogLevel.Information);
                 logBuilder.AddNLog("nlog.config");
-            }).Build();
+            })
+            .Build();
 
             using (var serviceScope = _host.Services.CreateScope())
             {
