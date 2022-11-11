@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,16 +20,40 @@ namespace wfh_log_wpf
     {
         private System.Windows.Forms.NotifyIcon _notifyIcon;
         private bool _isExit;
+        
+        private IHost _host;
 
         public App()
         {
+            _host = Host.CreateDefaultBuilder().ConfigureServices((hostContext, services) =>
+            {
+                services.AddSingleton<MainWindow>();
+            }).ConfigureLogging(logBuilder =>
+            {
+                logBuilder.SetMinimumLevel(LogLevel.Information);
+                logBuilder.AddNLog("nlog.config");
+            }).Build();
+
+            using (var serviceScope = _host.Services.CreateScope())
+            {
+                var services = serviceScope.ServiceProvider;
+
+                try
+                {
+                    MainWindow = _host.Services.GetRequiredService<MainWindow>();
+                    MainWindow.Closing += MainWindow_Closing;
+                    MainWindow.Show();
+                } 
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error occured " + e.Message);
+                }
+            }
         }
 
-        protected override void OnStartup(StartupEventArgs e)
+        private async void Application_Startup(object sender, StartupEventArgs e)
         {
-            base.OnStartup(e);
-            MainWindow = new MainWindow();
-            MainWindow.Closing += MainWindow_Closing;
+            await _host.StartAsync();
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
@@ -73,11 +100,26 @@ namespace wfh_log_wpf
             if (!_isExit)
             {
                 e.Cancel = true;
-                MainWindow.Hide(); // A hidden window can be shown again, a closed one not
+                MainWindow.Hide();
             } else
             {
-                Shutdown();
+                Shutdown_Application();
             }
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            Shutdown();
+        }
+
+        private async void Shutdown_Application()
+        {
+            using (_host)
+            {
+                await _host.StopAsync(TimeSpan.FromSeconds(5));
+            }
+
+            Shutdown();
         }
     }
 }

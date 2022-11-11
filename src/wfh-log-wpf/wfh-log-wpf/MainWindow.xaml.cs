@@ -1,4 +1,5 @@
 ﻿using ManagedNativeWifi;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,9 +23,11 @@ namespace wfh_log_wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(ILogger<MainWindow> logger)
         {
             InitializeComponent();
+
+            logger.LogInformation("Main window started");
 
             Closing += MainWindow_Closing;
 
@@ -55,7 +58,7 @@ namespace wfh_log_wpf
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
                 e.Cancel = true;
-                Hide(); // A hidden window can be shown again, a closed one not
+                Hide();
         }
     }
 
