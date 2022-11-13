@@ -19,7 +19,13 @@
         <Border Grid.Column ="1" Background="#1f3d7a"/>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#152951"/>
         <StackPanel Margin="40,0,0,0" VerticalAlignment="Center">
-            <TextBlock Foreground="White" FontSize="25" Text="-"/>
+            <ListView Name="LogListView" ItemsSource="{Binding}">
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="Message" DisplayMemberBinding="{Binding}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
             <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="{Binding Path=ConnectedNetworkSsid, Mode=TwoWay}" />

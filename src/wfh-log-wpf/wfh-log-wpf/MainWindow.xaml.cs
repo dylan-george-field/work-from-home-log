@@ -1,6 +1,8 @@
 ﻿using ManagedNativeWifi;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NLog.Targets;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +18,14 @@ namespace wfh_log_wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<MainWindow> _logger;
         private readonly IOptions<Settings> _settings;
 
-        private readonly List<LogTemplate> _logs;
+        public readonly MemoryLog _memoryLog;
 
-        public MainWindow(ILogger<MainWindow> logger, IOptions<Settings> settings, HourlyTimer timer)
+        public MainWindow(ILogger<MainWindow> logger, IOptions<Settings> settings, HourlyTimer timer, MemoryLog memoryLog)
         {
+            _memoryLog = memoryLog;
             _logger = logger;
             _settings = settings;
 
@@ -43,10 +46,15 @@ namespace wfh_log_wpf
             };
 
             if (currentNetwork.ToString() == network.HomeNetwork)
+            {
                 network.WorkFromHomeStatus = "You are working from home";
+                _logger.LogInformation("You are working from home");
+            }
             else
+            {
                 network.WorkFromHomeStatus = "You are not working from home";
-
+                _logger.LogInformation("You are not working from home");
+            }
 
             ConnectedNetworkSsid.DataContext = network;
             WorkFromHomeStatus.DataContext = network;
@@ -57,6 +65,8 @@ namespace wfh_log_wpf
 
         public void HandleTimer(Object source, ElapsedEventArgs e)
         {
+            this.Dispatcher.Invoke(() => LogListView.DataContext = _memoryLog.Logs.ToList());
+
             var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
 
             if (!connectedNetworkSsids.Any())
@@ -66,12 +76,10 @@ namespace wfh_log_wpf
 
             if (currentNetwork.ToString() == _settings.Value.HomeNetwork)
             {
-                _logs.Add(new LogTemplate() { DateTime = DateTime.Now, IsWorkingWorkingFromHome = true });
                 _logger.LogInformation("You are working from home");
             }
             else
             {
-                _logs.Add(new LogTemplate() { DateTime = DateTime.Now, IsWorkingWorkingFromHome = false });
                 _logger.LogInformation("You are not working from home");
             }
         }

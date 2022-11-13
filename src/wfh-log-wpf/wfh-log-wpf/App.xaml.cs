@@ -2,7 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog;
 using NLog.Extensions.Logging;
+using NLog.Targets;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +37,7 @@ namespace wfh_log_wpf
                 services.Configure<Settings>(configrurationRoot.GetSection(nameof(Settings)));
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<HourlyTimer>();
+                services.AddSingleton<MemoryLog>();
             })
             .ConfigureAppConfiguration((context, configurationBuilder) =>
             {
