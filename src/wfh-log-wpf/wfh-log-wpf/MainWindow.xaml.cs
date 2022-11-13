@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Timers;
@@ -16,14 +17,16 @@ namespace wfh_log_wpf
     public partial class MainWindow : Window
     {
         private readonly ILogger _logger;
+        private readonly IOptions<Settings> _settings;
+
+        private readonly List<LogTemplate> _logs;
 
         public MainWindow(ILogger<MainWindow> logger, IOptions<Settings> settings, HourlyTimer timer)
         {
             _logger = logger;
+            _settings = settings;
 
             InitializeComponent();
-
-            logger.LogInformation("Main window started");
 
             Closing += MainWindow_Closing;
 
@@ -54,7 +57,23 @@ namespace wfh_log_wpf
 
         public void HandleTimer(Object source, ElapsedEventArgs e)
         {
-            _logger.LogInformation("Handle the timer");
+            var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
+
+            if (!connectedNetworkSsids.Any())
+                return;
+
+            var currentNetwork = connectedNetworkSsids.First();
+
+            if (currentNetwork.ToString() == _settings.Value.HomeNetwork)
+            {
+                _logs.Add(new LogTemplate() { DateTime = DateTime.Now, IsWorkingWorkingFromHome = true });
+                _logger.LogInformation("You are working from home");
+            }
+            else
+            {
+                _logs.Add(new LogTemplate() { DateTime = DateTime.Now, IsWorkingWorkingFromHome = false });
+                _logger.LogInformation("You are not working from home");
+            }
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
