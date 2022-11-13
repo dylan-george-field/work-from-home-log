@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Timers;
 using System.Windows;
 using wfh_log_wpf.Models;
 
@@ -15,8 +15,12 @@ namespace wfh_log_wpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(ILogger<MainWindow> logger, IOptions<Settings> settings)
+        private readonly ILogger _logger;
+
+        public MainWindow(ILogger<MainWindow> logger, IOptions<Settings> settings, HourlyTimer timer)
         {
+            _logger = logger;
+
             InitializeComponent();
 
             logger.LogInformation("Main window started");
@@ -45,6 +49,12 @@ namespace wfh_log_wpf
             WorkFromHomeStatus.DataContext = network;
             WorkHoursStatus.DataContext = network;
 
+            timer.AddHandler(HandleTimer);
+        }
+
+        public void HandleTimer(Object source, ElapsedEventArgs e)
+        {
+            _logger.LogInformation("Handle the timer");
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)

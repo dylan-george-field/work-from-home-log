@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using System.Windows;
 using wfh_log_wpf.Models;
 
@@ -33,6 +34,7 @@ namespace wfh_log_wpf
                 var configrurationRoot = hostContext.Configuration;
                 services.Configure<Settings>(configrurationRoot.GetSection(nameof(Settings)));
                 services.AddSingleton<MainWindow>();
+                services.AddSingleton<HourlyTimer>();
             })
             .ConfigureAppConfiguration((context, configurationBuilder) =>
             {
@@ -42,7 +44,6 @@ namespace wfh_log_wpf
             })
             .ConfigureLogging(logBuilder =>
             {
-                logBuilder.SetMinimumLevel(LogLevel.Information);
                 logBuilder.AddNLog("nlog.config");
             })
             .Build();

@@ -5,6 +5,7 @@ namespace wfh_log_wpf.Models
     public class Settings
     {
         public string HomeNetwork { get; set; }
+        public WorkHours WorkHours { get; set; }
     }
 
     public class WorkHours
