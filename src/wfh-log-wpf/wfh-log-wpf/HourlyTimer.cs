@@ -14,7 +14,7 @@ namespace wfh_log_wpf
 
             int minutes = DateTime.Now.Minute;
             int adjust = 10 - (minutes % 1);
-            timer.Interval = adjust * 60 * 1000;
+            timer.Interval = adjust * 60 * 100;
         }
 
         public void Start()

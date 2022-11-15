@@ -58,14 +58,17 @@ namespace wfh_log_wpf
 
             ConnectedNetworkSsid.DataContext = network;
             WorkFromHomeStatus.DataContext = network;
-            WorkHoursStatus.DataContext = network;
+            // WorkHoursStatus.DataContext = network;
 
             timer.AddHandler(HandleTimer);
         }
 
         public void HandleTimer(Object source, ElapsedEventArgs e)
         {
-            this.Dispatcher.Invoke(() => LogListView.DataContext = _memoryLog.Logs.ToList());
+            Dispatcher.Invoke(() =>
+            {
+              LogView.ItemsSource = _memoryLog.Logs.ToList();
+            });
 
             var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
 
