@@ -10,7 +10,7 @@ namespace wfh_log_wpf
 
         public MemoryLog()
         {
-            var target = (MemoryTarget)LogManager.Configuration.FindTargetByName("memory");
+            var target = ()LogManager.Configuration.FindTargetByName("memory");
             LogManager.Configuration.RemoveTarget("console");
             Logs = target.Logs;
         }

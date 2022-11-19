@@ -38,6 +38,7 @@ namespace wfh_log_wpf
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<HourlyTimer>();
                 services.AddSingleton<MemoryLog>();
+                services.AddSingleton<LogReader>();
             })
             .ConfigureAppConfiguration((context, configurationBuilder) =>
             {
@@ -54,6 +55,8 @@ namespace wfh_log_wpf
             using (var serviceScope = _host.Services.CreateScope())
             {
                 var services = serviceScope.ServiceProvider;
+                
+                var reader = _host.Services.GetRequiredService<LogReader>();
 
                 try
                 {

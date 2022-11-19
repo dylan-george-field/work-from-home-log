@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace wfh_log_wpf
 {
     public class LogReader
     {
-        public List<LogEntry> logs = new List<LogEntry>();
+        public List<LogEntry> logs = new();
 
-        public LogReader(string path)
+        public LogReader()
         {
+            var path = @"C:\temp\wfh.log";
+
+            if (!File.Exists(path))
+                throw new FileNotFoundException(path);
+
+
             var lines = File.ReadAllLines(path);
 
             foreach(var line in lines)
