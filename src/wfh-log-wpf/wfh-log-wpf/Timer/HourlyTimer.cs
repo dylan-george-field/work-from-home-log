@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Timers;
 
-namespace wfh_log_wpf
+namespace wfh_log_wpf.Timer
 {
     public class HourlyTimer
     {
-        private readonly Timer timer = new();
+        private readonly System.Timers.Timer timer = new();
 
         public HourlyTimer()
         {
@@ -13,7 +13,7 @@ namespace wfh_log_wpf
             timer.Enabled = true;
 
             int minutes = DateTime.Now.Minute;
-            int adjust = 10 - (minutes % 1);
+            int adjust = 10 - minutes % 1;
             timer.Interval = adjust * 60 * 100;
         }
 
@@ -22,7 +22,8 @@ namespace wfh_log_wpf
             timer.Start();
         }
 
-        public void AddHandler(ElapsedEventHandler function) {
+        public void AddHandler(ElapsedEventHandler function)
+        {
             timer.Elapsed += function;
         }
 
