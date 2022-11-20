@@ -5,6 +5,7 @@ using System.Linq;
 using System.Timers;
 using System.Windows;
 using wfh_log_wpf.Logger;
+using wfh_log_wpf.Timer;
 
 namespace wfh_log_wpf
 {

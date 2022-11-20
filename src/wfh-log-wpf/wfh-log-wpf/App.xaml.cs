@@ -2,9 +2,12 @@
 using Microsoft.Extensions.Hosting;
 using System;
 using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 using System.Windows;
 using wfh_log_wpf.Logger;
 using wfh_log_wpf.Models;
+using wfh_log_wpf.Timer;
 
 namespace wfh_log_wpf
 {
@@ -54,9 +57,11 @@ namespace wfh_log_wpf
         {
             await _host.StartAsync();
 
+            var assembly = Assembly.GetExecutingAssembly();
+
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
-            _notifyIcon.Icon = new System.Drawing.Icon("./Assets/house.ico");
+            _notifyIcon.Icon = new System.Drawing.Icon(assembly.GetManifestResourceStream("wfh_log_wpf.Assets.house.ico"));
             _notifyIcon.Visible = true;
 
             CreateContextMenu();

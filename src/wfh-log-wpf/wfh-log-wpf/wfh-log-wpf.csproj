@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Assets\house.ico">
+    <EmbeddedResource Include="Assets\house.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
