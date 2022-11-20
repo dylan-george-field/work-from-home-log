@@ -3,36 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:wfh_log_wpf"
         mc:Ignorable="d"
-        Title="wfh-log" Height="450" Width="800">
+        Title="wfh-log" Height="200" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="3*"/>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Border Background="#2f5cb6"/>
         <Border Grid.Column ="1" Background="#1f3d7a"/>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#152951"/>
-        <StackPanel Margin="20">
-            <TextBlock Foreground="White" FontSize="18" Text="Logs" />
-            <ListView Name="LogView" Height="300" ItemsSource="{Binding MemoryLog}">
-            </ListView>
+        <StackPanel Grid.Row="1" Margin="10">
+            <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="HomeNetworkTextbox"/>
+            <Button Name="SetHomeNetwork" Width="150" Margin="5" Content="Set Home Network" Click="SetHomeNetworkButton_Click" />
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
-            <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="{Binding Path=ConnectedNetworkSsid, Mode=TwoWay}" />
-            <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="25" Text="{Binding Path=WorkFromHomeStatus, Mode=TwoWay}"/>
-            <!--<TextBlock Name="WorkHoursStatus" Foreground="White" FontSize="25" Text="{Binding Path=WorkHoursStatus, Mode=TwoWay}"/>-->
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
-            HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Foreground="White" FontSize="25" Text="250 hours" Margin="0,0,20,0"/>
-            <TextBlock Foreground="White" FontSize="25" Text="10 minutes" Margin="0,0,20,0"/>
-            <TextBlock Foreground="White" FontSize="25" Text="1 seconds" Margin="0,0,20,0"/>
+        <StackPanel Grid.Row="2" Margin="10" VerticalAlignment="Center">
+            <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="" />
+            <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="25" Text=""/>
         </StackPanel>
     </Grid>
 </Window>

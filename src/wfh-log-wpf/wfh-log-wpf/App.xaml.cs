@@ -1,19 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using NLog;
-using NLog.Extensions.Logging;
-using NLog.Targets;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Threading.Tasks.Dataflow;
 using System.Windows;
+using wfh_log_wpf.Logger;
 using wfh_log_wpf.Models;
 
 namespace wfh_log_wpf
@@ -37,20 +27,9 @@ namespace wfh_log_wpf
                 services.Configure<Settings>(configrurationRoot.GetSection(nameof(Settings)));
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<HourlyTimer>();
-                services.AddSingleton<MemoryLog>();
                 services.AddSingleton<LogReader>();
-            })
-            .ConfigureAppConfiguration((context, configurationBuilder) =>
-            {
-                configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath);
-                configurationBuilder.AddJsonFile("appsettings.json");
-
-            })
-            .ConfigureLogging(logBuilder =>
-            {
-                logBuilder.AddNLog("nlog.config");
-            })
-            .Build();
+                services.AddSingleton<LogWriter>();
+            }).Build();
 
             using (var serviceScope = _host.Services.CreateScope())
             {
@@ -77,7 +56,7 @@ namespace wfh_log_wpf
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
-            _notifyIcon.Icon = new System.Drawing.Icon("house.ico");
+            _notifyIcon.Icon = new System.Drawing.Icon("./Assets/house.ico");
             _notifyIcon.Visible = true;
 
             CreateContextMenu();
