@@ -63,6 +63,8 @@ namespace wfh_log_wpf
 
             var currentNetwork = connectedNetworkSsids.First();
 
+            Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork.ToString());
+
             if (currentNetwork.ToString() == HomeNetwork)
             {
                 var message = "You are working from home";
@@ -89,6 +91,8 @@ namespace wfh_log_wpf
                 return;
 
             var currentNetwork = connectedNetworkSsids.First();
+
+            Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork.ToString());
 
             if (currentNetwork.ToString() == HomeNetwork)
             {
