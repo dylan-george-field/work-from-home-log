@@ -6,10 +6,11 @@ namespace wfh_log_wpf.Logger
 {
     public class LogWriter : BaseLog
     {
-        public void Log(string message)
+        public void Log(bool isWorkingFromHome)
         {
             var streamWriter = File.AppendText(path);
-            var entry = new LogEntry(message);
+            var entry = new LogEntry(isWorkingFromHome);
+
 
             streamWriter.WriteLine(JsonSerializer.Serialize(entry));
 

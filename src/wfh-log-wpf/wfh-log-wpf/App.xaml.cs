@@ -26,8 +26,6 @@ namespace wfh_log_wpf
             _host = Host.CreateDefaultBuilder()
             .ConfigureServices((hostContext, services) =>
             {
-                var configrurationRoot = hostContext.Configuration;
-                services.Configure<Settings>(configrurationRoot.GetSection(nameof(Settings)));
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<HourlyTimer>();
                 services.AddSingleton<LogReader>();

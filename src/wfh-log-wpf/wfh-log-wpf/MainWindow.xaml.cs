@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Timers;
 using System.Windows;
+using wfh_log_wpf.Helper;
 using wfh_log_wpf.Logger;
 using wfh_log_wpf.Timer;
 
@@ -15,7 +16,7 @@ namespace wfh_log_wpf
     public partial class MainWindow : Window
     {
         private readonly LogWriter _logger;
-        private string HomeNetwork = "Dylan's Pad 🐇";
+        private string HomeNetwork = "No network";
 
         public MainWindow(LogWriter logger, HourlyTimer timer)
         {
@@ -26,29 +27,24 @@ namespace wfh_log_wpf
             Closing += MainWindow_Closing;
 
             HomeNetwork = File.ReadAllText(@"C:\temp\settings.txt");
+
             HomeNetworkTextbox.Text = HomeNetwork;
 
-            var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
+            var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();
 
-            if (!connectedNetworkSsids.Any())
-                return;
-
-            var currentNetwork = connectedNetworkSsids.First();
-
-
-            ConnectedNetworkSsid.Text = currentNetwork.ToString();
+            ConnectedNetworkSsid.Text = currentNetwork;
 
             if (currentNetwork.ToString() == HomeNetwork)
             {
                 var message = "You are working from home";
                 WorkFromHomeStatus.Text = message;
-                _logger.Log(message);
+                _logger.Log(isWorkingFromHome: true);
             }
             else
             {
                 var message = "You are not working from home";
                 WorkFromHomeStatus.Text = message;
-                _logger.Log(message);
+                _logger.Log(isWorkingFromHome: false);
             }
 
             timer.AddHandler(HandleTimer);
@@ -56,12 +52,7 @@ namespace wfh_log_wpf
 
         private void HandleTimer(object? source, ElapsedEventArgs e)
         {
-            var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
-
-            if (!connectedNetworkSsids.Any())
-                return;
-
-            var currentNetwork = connectedNetworkSsids.First();
+            var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();
 
             Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork.ToString());
 
@@ -69,13 +60,13 @@ namespace wfh_log_wpf
             {
                 var message = "You are working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(message);
+                _logger.Log(isWorkingFromHome: true);
             }
             else
             {
                 var message = "You are not working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(message);
+                _logger.Log(isWorkingFromHome: true);
             }
         }
 
@@ -85,26 +76,21 @@ namespace wfh_log_wpf
             File.WriteAllText(@"C:\temp\settings.txt", HomeNetworkTextbox.Text);
             HomeNetwork = HomeNetworkTextbox.Text;
             // re-run
-            var connectedNetworkSsids = NativeWifi.EnumerateConnectedNetworkSsids();
+            var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();
 
-            if (!connectedNetworkSsids.Any())
-                return;
-
-            var currentNetwork = connectedNetworkSsids.First();
-
-            Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork.ToString());
+            Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork);
 
             if (currentNetwork.ToString() == HomeNetwork)
             {
                 var message = "You are working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(message);
+                _logger.Log(isWorkingFromHome: true);
             }
             else
             {
                 var message = "You are not working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(message);
+                _logger.Log(isWorkingFromHome: true);
             }
         }
 

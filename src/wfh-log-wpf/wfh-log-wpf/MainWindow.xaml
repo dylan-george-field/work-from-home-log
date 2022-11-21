@@ -7,20 +7,22 @@
         Title="wfh-log" Height="200" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="65" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Border Background="#2f5cb6"/>
         <Border Grid.Column ="1" Background="#1f3d7a"/>
-        <StackPanel Grid.Row="1" Margin="10">
+        <Border Grid.Row ="1" Background="#1f3d7a"/>
+        <StackPanel Grid.Row="0" Margin="10">
             <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="HomeNetworkTextbox"/>
             <Button Name="SetHomeNetwork" Width="150" Margin="5" Content="Set Home Network" Click="SetHomeNetworkButton_Click" />
         </StackPanel>
-        <StackPanel Grid.Row="2" Margin="10" VerticalAlignment="Center">
-            <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="" />
-            <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="25" Text=""/>
+        <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Center">
+            <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="No network" />
+            <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="25" Text="You are not working from home"/>
         </StackPanel>
     </Grid>
 </Window>

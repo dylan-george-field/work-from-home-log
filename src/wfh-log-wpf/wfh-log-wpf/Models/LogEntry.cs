@@ -5,16 +5,11 @@ namespace wfh_log_wpf.Models
     public class LogEntry
     {
         public DateTime Time { get; set; } = DateTime.Now.ToLocalTime();
-        public string Message { get; set; } = "No message";
+        public bool IsWorkingFromHome { get; set; } = false;
 
-        public LogEntry(string message)
+        public LogEntry(bool isWorkingFromHome)
         {
-            Message = message;
-        }
-
-        public override string ToString()
-        {
-            return $"{Time} | {Message}";
+            IsWorkingFromHome = isWorkingFromHome;
         }
     }
 }
