@@ -38,13 +38,13 @@ namespace wfh_log_wpf
             {
                 var message = "You are working from home";
                 WorkFromHomeStatus.Text = message;
-                _logger.Log(isWorkingFromHome: true);
+                _logger.Log(isWorkingFromHome: true, currentNetwork);
             }
             else
             {
                 var message = "You are not working from home";
                 WorkFromHomeStatus.Text = message;
-                _logger.Log(isWorkingFromHome: false);
+                _logger.Log(isWorkingFromHome: false, currentNetwork);
             }
 
             timer.AddHandler(HandleTimer);
@@ -60,13 +60,13 @@ namespace wfh_log_wpf
             {
                 var message = "You are working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: true);
+                _logger.Log(isWorkingFromHome: true, currentNetwork);
             }
             else
             {
                 var message = "You are not working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: true);
+                _logger.Log(isWorkingFromHome: true, currentNetwork);
             }
         }
 
@@ -84,13 +84,13 @@ namespace wfh_log_wpf
             {
                 var message = "You are working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: true);
+                _logger.Log(isWorkingFromHome: true, currentNetwork);
             }
             else
             {
                 var message = "You are not working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: true);
+                _logger.Log(isWorkingFromHome: true, currentNetwork);
             }
         }
 
