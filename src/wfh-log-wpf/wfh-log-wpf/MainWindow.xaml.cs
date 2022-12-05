@@ -66,7 +66,7 @@ namespace wfh_log_wpf
             {
                 var message = "You are not working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: true, currentNetwork);
+                _logger.Log(isWorkingFromHome: false, currentNetwork);
             }
         }
 
@@ -90,7 +90,7 @@ namespace wfh_log_wpf
             {
                 var message = "You are not working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: true, currentNetwork);
+                _logger.Log(isWorkingFromHome: false, currentNetwork);
             }
         }
 

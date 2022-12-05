@@ -11,13 +11,15 @@ namespace wfh_log_wpf.Logger
     {
         public void Log(bool isWorkingFromHome, string connectedNetworkName)
         {
-            var streamWriter = File.AppendText(path);
-            
             var entry = new LogEntry(isWorkingFromHome, connectedNetworkName);
 
             var options = new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
-            streamWriter.WriteLine(JsonSerializer.Serialize(entry, options));
+            var json = JsonSerializer.Serialize(entry, options);
+
+            var streamWriter = File.AppendText(path);
+
+            streamWriter.WriteLine(json);
 
             streamWriter.Dispose();
         }
