@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Windows;
 using wfh_log_wpf.Logger;
 using wfh_log_wpf.Models;
+using wfh_log_wpf.Settings;
 using wfh_log_wpf.Timer;
 
 namespace wfh_log_wpf
@@ -30,6 +31,7 @@ namespace wfh_log_wpf
                 services.AddSingleton<HourlyTimer>();
                 services.AddSingleton<LogReader>();
                 services.AddSingleton<LogWriter>();
+                services.AddSingleton<HomeNetworkSettings>();
             }).Build();
 
             using (var serviceScope = _host.Services.CreateScope())

@@ -1,4 +1,5 @@
 ﻿using ManagedNativeWifi;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Timers;
 using System.Windows;
 using wfh_log_wpf.Helper;
 using wfh_log_wpf.Logger;
+using wfh_log_wpf.Settings;
 using wfh_log_wpf.Timer;
 
 namespace wfh_log_wpf
@@ -16,25 +18,24 @@ namespace wfh_log_wpf
     public partial class MainWindow : Window
     {
         private readonly LogWriter _logger;
-        private string HomeNetwork = "No network";
+        private readonly HomeNetworkSettings _settings;
 
-        public MainWindow(LogWriter logger, HourlyTimer timer)
+        public MainWindow(LogWriter logger, HourlyTimer timer, HomeNetworkSettings settings)
         {
             _logger = logger;
+            _settings = settings;
 
             InitializeComponent();
 
             Closing += MainWindow_Closing;
 
-            HomeNetwork = File.ReadAllText(@"C:\temp\settings.txt");
-
-            HomeNetworkTextbox.Text = HomeNetwork;
+            HomeNetworkTextbox.Text = settings.GetHomeNetworkString();
 
             var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();
 
             ConnectedNetworkSsid.Text = currentNetwork;
 
-            if (currentNetwork.ToString() == HomeNetwork)
+            if (_settings.HomeNetworks.Contains(currentNetwork.ToString()))
             {
                 var message = "You are working from home";
                 WorkFromHomeStatus.Text = message;
@@ -56,7 +57,7 @@ namespace wfh_log_wpf
 
             Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork.ToString());
 
-            if (currentNetwork.ToString() == HomeNetwork)
+            if (_settings.HomeNetworks.Contains(currentNetwork.ToString()))
             {
                 var message = "You are working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
@@ -74,13 +75,13 @@ namespace wfh_log_wpf
         {
             // save value
             File.WriteAllText(@"C:\temp\settings.txt", HomeNetworkTextbox.Text);
-            HomeNetwork = HomeNetworkTextbox.Text;
+            _settings.SetHomeNetworks(HomeNetworkTextbox.Text);
             // re-run
             var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();
 
             Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork);
 
-            if (currentNetwork.ToString() == HomeNetwork)
+            if (_settings.HomeNetworks.Contains(currentNetwork.ToString()))
             {
                 var message = "You are working from home";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
