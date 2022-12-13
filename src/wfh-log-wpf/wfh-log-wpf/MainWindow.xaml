@@ -12,17 +12,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="65" />
             <RowDefinition Height="1*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <Border Background="#2f5cb6"/>
-        <Border Grid.Column ="1" Background="#1f3d7a"/>
-        <Border Grid.Row ="1" Background="#1f3d7a"/>
+        <Border Grid.Row="0" Background="#2f5cb6" BorderThickness="0" BorderBrush="SteelBlue"/>
+        <Border Grid.Row="1" Background="#2f5cb6" BorderThickness="1" BorderBrush="SteelBlue"/>
+        <Border Grid.Row="2" Background="#2f5cb6" BorderThickness="0" BorderBrush="SteelBlue"/>
         <StackPanel Grid.Row="0" Margin="10">
-            <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="HomeNetworkTextbox"/>
+            <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="HomeNetworkTextbox" 
+                     ToolTip="A semicolon separated list of SSIDs eg, 'my home network; my mobile phone;'"/>
             <Button Name="SetHomeNetwork" Width="150" Margin="5" Content="Set Home Network" Click="SetHomeNetworkButton_Click" />
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Center">
             <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="No network" />
             <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="25" Text="You are not working from home"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.0.2"/>
         </StackPanel>
     </Grid>
 </Window>
