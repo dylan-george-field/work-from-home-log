@@ -27,7 +27,7 @@
             <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="24" Text="You are not working from home"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.0.2"/>
+            <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.0.3"/>
         </StackPanel>
     </Grid>
 </Window>
