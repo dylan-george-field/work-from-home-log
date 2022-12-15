@@ -7,12 +7,16 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>Assets/house.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\house-apple.ico</ApplicationIcon>
     <PackageIcon>Assets/house.ico</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\house-white.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\house-apple.ico" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="wfh-log" Height="200" Width="450">
+        Title="wfh-log" Height="210" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="65" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="15*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="#2f5cb6" BorderThickness="0" BorderBrush="SteelBlue"/>
@@ -23,8 +23,8 @@
             <Button Name="SetHomeNetwork" Width="150" Margin="5" Content="Set Home Network" Click="SetHomeNetworkButton_Click" />
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Center">
-            <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="25" Text="No network" />
-            <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="25" Text="You are not working from home"/>
+            <TextBlock Name="ConnectedNetworkSsid" Foreground="White" FontSize="24" Text="No network" />
+            <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="24" Text="You are not working from home"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.0.2"/>
