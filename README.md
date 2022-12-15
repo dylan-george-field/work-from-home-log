@@ -1,7 +1,7 @@
 # wfh-log
 A wpf app to log work from home hours for the Australian Tax Office (ATO)
 
-![The work from home log app](https://user-images.githubusercontent.com/13308154/203295221-eaec69e7-7f68-419d-8ec9-c2b27e6e7cdc.png)
+![The work from home log app](docs/example.png)
 
 ## Installation
 This app only works on Windows.
