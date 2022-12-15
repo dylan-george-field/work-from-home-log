@@ -20,7 +20,7 @@ This app only works on Windows.
 The application logs once at startup and every hour.
 
 The log will be in location:
-`C:\temp\wfh.log`
+`c:\users\dylan\appdata\local\wfh-log`
 
 ## A note on the ATO
 You only need a 4 week log to claim the fixed rate method for working from home expenses.
