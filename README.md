@@ -1,5 +1,5 @@
 # work from home log
-A wpf app to log work from home hours for the Australian Tax Office (ATO)
+Logs work from home hours for the Australian Tax Office (ATO).
 
 ![The work from home log app](docs/example.png)
 
