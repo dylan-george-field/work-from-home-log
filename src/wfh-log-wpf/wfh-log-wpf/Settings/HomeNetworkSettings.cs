@@ -8,7 +8,9 @@ namespace wfh_log_wpf.Settings
     public class HomeNetworkSettings
     {
         public List<string> HomeNetworks = new();
-        private const string DefaultSettingsFilePath = @"C:\temp\settings.txt";
+        internal readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+            + "\\wfh-log"; // duplicate with base log
+        private const string filename = "settings.txt";
 
         public HomeNetworkSettings()
         {
@@ -17,7 +19,14 @@ namespace wfh_log_wpf.Settings
 
         public void ReadHomeNetworksFromFile()
         {
-            var file = File.ReadAllText(DefaultSettingsFilePath);
+            if (!File.Exists(path + "\\" + filename))
+            {
+                Directory.CreateDirectory(path);
+                var filestream = File.Create(path + "\\" + filename);
+                filestream.Dispose();
+            }
+
+            var file = File.ReadAllText(path + "\\" + filename);
 
             SetHomeNetworks(file);
         }

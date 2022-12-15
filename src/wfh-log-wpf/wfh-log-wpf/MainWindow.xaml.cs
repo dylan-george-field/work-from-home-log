@@ -1,6 +1,8 @@
 ﻿using ManagedNativeWifi;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Timers;
@@ -73,8 +75,19 @@ namespace wfh_log_wpf
 
         private void SetHomeNetworkButton_Click(object? source, RoutedEventArgs args)
         {
-            // save value
-            File.WriteAllText(@"C:\temp\settings.txt", HomeNetworkTextbox.Text);
+            // move to home network settings
+         string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+            + "\\wfh-log"; // duplicate with base log
+            string filename = "settings.txt";
+
+            if (!File.Exists(path + "\\" + filename))
+            {
+                Directory.CreateDirectory(path);
+                var filestream = File.Create(path + "\\" + filename);
+                filestream.Dispose();
+            }
+
+            File.WriteAllText(path + "\\" + filename, HomeNetworkTextbox.Text);
             _settings.SetHomeNetworks(HomeNetworkTextbox.Text);
             // re-run
             var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();

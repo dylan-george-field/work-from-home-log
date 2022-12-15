@@ -1,7 +1,11 @@
-﻿namespace wfh_log_wpf.Logger
+﻿using System;
+
+namespace wfh_log_wpf.Logger
 {
     public abstract class BaseLog
     {
-        internal readonly string path = @"C:\temp\wfh.log";
+        internal readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+            + "\\wfh-log";
+        internal const string filename = "wfh.log";
     }
 }
