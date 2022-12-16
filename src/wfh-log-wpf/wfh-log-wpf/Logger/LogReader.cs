@@ -11,14 +11,14 @@ namespace wfh_log_wpf.Logger
 
         public LogReader()
         {
-            if (!File.Exists(path + "\\" + filename))
+            if (!File.Exists(LogAbsolutePath))
             {
-                Directory.CreateDirectory(path);
-                var filestream = File.Create(path + "\\" + filename);
+                Directory.CreateDirectory(LogAbsolutePath);
+                var filestream = File.Create(LogAbsolutePath);
                 filestream.Dispose();
             }
 
-            var lines = File.ReadAllLines(path + "\\" + filename);
+            var lines = File.ReadAllLines(LogAbsolutePath);
 
             foreach (var line in lines)
             {
