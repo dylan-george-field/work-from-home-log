@@ -15,7 +15,7 @@ namespace wfh_log_wpf.Logger
 
             var json = JsonSerializer.Serialize(entry, options);
 
-            var streamWriter = File.AppendText(LogAbsolutePath);
+            var streamWriter = File.AppendText(AbsoluteFilePath);
 
             streamWriter.WriteLine(json);
 

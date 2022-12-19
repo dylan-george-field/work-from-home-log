@@ -13,5 +13,12 @@ namespace wfh_log_wpf.Models
             IsWorkingFromHome = isWorkingFromHome;
             ConnectedNetwork = connectedNetwork;
         }
+
+        public override string ToString()
+        {
+            var text = IsWorkingFromHome ? "You were working from home ✔" : "You were not working from home ❌";
+
+            return Time.ToLongDateString() + ": " + text;
+        }
     }
 }

@@ -4,22 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="wfh-log" Height="210" Width="450">
+        Title="wfh-log" Height="420" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="65" />
-            <RowDefinition Height="15*" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="200" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="#2f5cb6" BorderThickness="0" BorderBrush="SteelBlue"/>
         <Border Grid.Row="1" Background="#2f5cb6" BorderThickness="1" BorderBrush="SteelBlue"/>
         <Border Grid.Row="2" Background="#2f5cb6" BorderThickness="0" BorderBrush="SteelBlue"/>
+        <Border Grid.Row="3" Background="#2f5cb6" BorderThickness="0" BorderBrush="SteelBlue"/>
         <StackPanel Grid.Row="0" Margin="10">
             <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="HomeNetworkTextbox" 
-                     ToolTip="A semicolon separated list of SSIDs eg, 'my home network; my mobile phone;'"/>
+                     ToolTip="A semicolon separated list of SSIDs"/>
             <Button Name="SetHomeNetwork" Width="150" Margin="5" Content="Set Home Network" Click="SetHomeNetworkButton_Click" />
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="10" VerticalAlignment="Center">
@@ -27,6 +29,13 @@
             <TextBlock Name="WorkFromHomeStatus" Foreground="White" FontSize="24" Text="You are not working from home"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
+            <ListView Margin="10" Name="lvDataBinding" MaxHeight="160">
+                <!--<ListViewItem>Sunday 18/12/2022 - You are working from home ✔</ListViewItem>
+                <ListViewItem>Saturday 17/12/2022 - You are working from home ✔</ListViewItem>
+                <ListViewItem>Friday 16/12/2022 - You are not working from home ❌</ListViewItem>-->
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
             <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.3.0"/>
         </StackPanel>
     </Grid>
