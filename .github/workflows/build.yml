@@ -5,3 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: dotnet restore
+      - run: dotnet build --configuration Release --no-restore
