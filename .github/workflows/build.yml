@@ -10,3 +10,4 @@ jobs:
         run: |
           dotnet restore
           dotnet build --configuration Release --no-restore
+          dotnet publish -p:PublishProfile=FolderProfile
