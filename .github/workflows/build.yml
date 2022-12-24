@@ -8,9 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: restore & build
+      - name: publish app
         working-directory: src/wfh-log-wpf
         run: |
-          dotnet restore
-          dotnet build --configuration Release --no-restore
           dotnet publish -p:PublishProfile=FolderProfile
+
