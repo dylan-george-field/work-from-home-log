@@ -10,8 +10,8 @@ namespace wfh_log_wpf.Logger
         public BaseLog()
         {
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var directory = "wpf-log";
-            var filename = "wpf.log";
+            var directory = "wfh-log";
+            var filename = "wfh.log";
 
             AbsoluteFilePath = Path.Combine(appDataPath, directory, filename);
         }

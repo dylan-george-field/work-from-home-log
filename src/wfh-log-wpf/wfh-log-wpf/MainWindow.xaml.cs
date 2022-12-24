@@ -29,7 +29,7 @@ namespace wfh_log_wpf
 
             InitializeComponent();
 
-            lvDataBinding.ItemsSource = logReader.GetAggregateLogs();
+            // lvDataBinding.ItemsSource = logReader.GetAggregateLogs();
 
             Closing += MainWindow_Closing;
 
