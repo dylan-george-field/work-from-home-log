@@ -12,4 +12,15 @@ jobs:
         working-directory: src/wfh-log-wpf
         run: |
           dotnet publish -p:PublishProfile=FolderProfile
-
+      - uses: actions/create-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: true
+          prerelease: false
+      - uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./wfh-log-wpf/wfh-log-wpf/bin/Release/net6.0-windows/publish/win-x64/wfh-log-wpf.exe
+          asset_name: wfh-log-wpf.exe
+          asset_content_type: application/octet-stream
