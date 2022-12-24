@@ -1,4 +1,4 @@
-# work from home log
+# work from home logger
 Logs work from home hours for the Australian Tax Office (ATO).
 
 ![The work from home log app](docs/example.png)
