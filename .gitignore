@@ -36,6 +36,6 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 
-# node
+# react
 site/node_modules
 !site/build
