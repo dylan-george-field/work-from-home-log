@@ -1,21 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={require("./example.png")} className="App-logo" alt="screenshot of wfh-log" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          A windows app to log work from home hours for the Australian Tax Office (ATO).
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/dylan-george-field/work-from-home-logger/releases/latest/download/wfh-log-wpf.exe"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Download
         </a>
       </header>
     </div>
