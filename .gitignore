@@ -38,3 +38,4 @@ msbuild.wrn
 
 # node
 site/node_modules
+!site/build
