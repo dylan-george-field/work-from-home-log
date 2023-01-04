@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -9,6 +11,7 @@ using wfh_log_wpf.Logger;
 using wfh_log_wpf.Models;
 using wfh_log_wpf.Settings;
 using wfh_log_wpf.Timer;
+using wfh_log_wpf.Uninstaller;
 
 namespace wfh_log_wpf
 {
@@ -22,8 +25,15 @@ namespace wfh_log_wpf
         
         private IHost _host;
 
+        private RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+
         public App()
         {
+            var location = Directory.GetCurrentDirectory() + "\\wfh-log.exe";
+            key.SetValue("wfh-log", "\"" + location + "\"", RegistryValueKind.String);
+            UninstallHelper.AddRegUninstallScript();
+
             _host = Host.CreateDefaultBuilder()
             .ConfigureServices((hostContext, services) =>
             {
@@ -61,6 +71,7 @@ namespace wfh_log_wpf
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
+            _notifyIcon.Click += (s, args) => ShowMainWindow();
             _notifyIcon.Text = "wfh-log";
             _notifyIcon.Icon = new System.Drawing.Icon(assembly.GetManifestResourceStream("wfh_log_wpf.Assets.house-white.ico"));
             _notifyIcon.Visible = true;
