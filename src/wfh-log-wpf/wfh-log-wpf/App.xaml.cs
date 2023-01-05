@@ -26,14 +26,14 @@ namespace wfh_log_wpf
         
         private IHost _host;
 
-        private RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        //private RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
 
         public App()
         {
-            var location = Directory.GetCurrentDirectory() + "\\wfh-log.exe";
+            /*var location = Directory.GetCurrentDirectory() + "\\wfh-log.exe";
             key.SetValue("wfh-log", "\"" + location + "\"", RegistryValueKind.String);
-            UninstallHelper.AddRegUninstallScript();
+            UninstallHelper.AddRegUninstallScript();*/
 
             _host = Host.CreateDefaultBuilder()
             .ConfigureServices((hostContext, services) =>
@@ -82,8 +82,7 @@ namespace wfh_log_wpf
 
         private void CreateContextMenu()
         {
-            _notifyIcon.ContextMenuStrip =
-              new System.Windows.Forms.ContextMenuStrip();
+            _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
             _notifyIcon.ContextMenuStrip.Items.Add("Open").Click += (s, e) => ShowMainWindow();
             _notifyIcon.ContextMenuStrip.Items.Add("Open Log File").Click += (s, e) => OpenLogFile();
             _notifyIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ExitApplication();
