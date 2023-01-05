@@ -15,8 +15,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Download
+         Download
         </a>
+        <p>Put it in the windows startup folder.</p>
       </header>
     </div>
   );
