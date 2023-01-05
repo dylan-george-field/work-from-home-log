@@ -11,6 +11,8 @@ namespace wfh_log_wpf.Logger
         {
             var entry = new LogEntry(isWorkingFromHome, connectedNetworkName);
 
+            _logs.Add(entry);
+
             var options = new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
 
             var json = JsonSerializer.Serialize(entry, options);

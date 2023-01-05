@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="wfh-log" Height="220" Width="450"> <!-- 450 -->
+        Title="wfh-log" Height="200" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -32,8 +32,9 @@
             <ListView Margin="10" Name="lvDataBinding" MaxHeight="160">
             </ListView>
         </StackPanel>-->
-        <StackPanel Grid.Row="2">
-            <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.4.0"/>
-        </StackPanel>
+        <DockPanel  Grid.Row="2">
+            <TextBlock Margin="3" HorizontalAlignment="Left" Foreground="SteelBlue" FontSize="10" Text="No logs"/>
+            <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.4.0" />
+        </DockPanel>
     </Grid>
 </Window>

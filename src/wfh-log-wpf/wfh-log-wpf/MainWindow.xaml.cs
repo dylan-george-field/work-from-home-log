@@ -22,7 +22,7 @@ namespace wfh_log_wpf
         private readonly LogWriter _logger;
         private readonly HomeNetworkSettings _settings;
 
-        public MainWindow(LogWriter logger, LogReader logReader, HourlyTimer timer, HomeNetworkSettings settings)
+        public MainWindow(LogWriter logger, HourlyTimer timer, HomeNetworkSettings settings)
         {
             _logger = logger;
             _settings = settings;
@@ -73,6 +73,8 @@ namespace wfh_log_wpf
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
                 _logger.Log(isWorkingFromHome: false, currentNetwork);
             }
+
+
         }
 
         private void SetHomeNetworkButton_Click(object? source, RoutedEventArgs args)

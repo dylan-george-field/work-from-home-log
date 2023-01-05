@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Win32;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -84,6 +85,7 @@ namespace wfh_log_wpf
             _notifyIcon.ContextMenuStrip =
               new System.Windows.Forms.ContextMenuStrip();
             _notifyIcon.ContextMenuStrip.Items.Add("Open").Click += (s, e) => ShowMainWindow();
+            _notifyIcon.ContextMenuStrip.Items.Add("Open Log File").Click += (s, e) => OpenLogFile();
             _notifyIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ExitApplication();
         }
  
@@ -109,6 +111,23 @@ namespace wfh_log_wpf
             {
                 MainWindow.Show();
             }
+        }
+
+        private void OpenLogFile()
+        {
+            var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var directory = "wfh-log";
+            var filename = "wfh.log";
+
+            var absoluteFilePath = Path.Combine(appDataPath, directory, filename);
+
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = absoluteFilePath,
+                UseShellExecute = true
+            };
+
+            Process.Start(processStartInfo);
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)

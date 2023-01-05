@@ -9,8 +9,6 @@ namespace wfh_log_wpf.Logger
 {
     public class LogReader : BaseLog
     {
-        private readonly List<LogEntry> _logs = new();
-
         public LogReader()
         {
             if (!File.Exists(AbsoluteFilePath))
