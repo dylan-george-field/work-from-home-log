@@ -11,7 +11,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://github.com/dylan-george-field/work-from-home-logger/releases/latest/download/wfh-log-wpf.exe"
+          href="https://github.com/dylan-george-field/work-from-home-logger/releases/latest/download/wfh-log.exe"
           target="_blank"
           rel="noopener noreferrer"
         >
