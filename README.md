@@ -13,7 +13,7 @@ This app only works on Windows.
 4. Place the wfh-log.exe here
 
 ## Usage
-1. Enter the name of your home network
+1. Enter a semi-colon (;) list of your home networks
 2. Save
 
 ## Logs

@@ -9,14 +9,23 @@ function App() {
         <p>
           A windows app to log work from home hours for the Australian Tax Office (ATO).
         </p>
-        <a
-          className="App-link"
-          href="https://github.com/dylan-george-field/work-from-home-logger/releases/latest/download/wfh-log.exe"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-         Download
-        </a>
+        <span>
+          <a 
+            className="App-link"
+            href="https://github.com/dylan-george-field/work-from-home-logger/releases/latest/download/wfh-log.exe"
+            target="_blank"
+            rel="noopener noreferrer">
+              Download 
+          </a>
+           | 
+          <a
+           className="App-link"
+           href="https://github.com/dylan-george-field/work-from-home-logger/wiki"
+           target="_blank"
+           rel="noopener noreferrer">
+            Wiki
+          </a>
+        </span>
         <p>Put it in the windows startup folder.</p>
       </header>
     </div>
