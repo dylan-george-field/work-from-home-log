@@ -72,7 +72,6 @@ namespace wfh_log_wpf
 
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
-            _notifyIcon.Click += (s, args) => ShowMainWindow();
             _notifyIcon.Text = "wfh-log";
             _notifyIcon.Icon = new System.Drawing.Icon(assembly.GetManifestResourceStream("wfh_log_wpf.Assets.house-white.ico"));
             _notifyIcon.Visible = true;
@@ -114,11 +113,7 @@ namespace wfh_log_wpf
 
         private void OpenLogFile()
         {
-            var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var directory = "wfh-log";
-            var filename = "wfh.log";
-
-            var absoluteFilePath = Path.Combine(appDataPath, directory, filename);
+            var absoluteFilePath = BaseLog.GetLogPath();
 
             var processStartInfo = new ProcessStartInfo
             {

@@ -12,11 +12,16 @@ namespace wfh_log_wpf.Logger
 
         public BaseLog()
         {
+            AbsoluteFilePath = GetLogPath();
+        }
+
+        public static string GetLogPath()
+        {
             var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var directory = "wfh-log";
             var filename = "wfh.log";
 
-            AbsoluteFilePath = Path.Combine(appDataPath, directory, filename);
+            return Path.Combine(appDataPath, directory, filename);
         }
     }
 }
