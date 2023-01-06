@@ -29,7 +29,7 @@ function App() {
         <p>Place the wfh-log.exe in your startup folder.</p>
       </header>
       <footer>
-        dylan.george.field@gmail.com
+        <a href="https://www.georgefield.com.au">www.georgefield.com.au</a>
       </footer>
     </div>
   );
