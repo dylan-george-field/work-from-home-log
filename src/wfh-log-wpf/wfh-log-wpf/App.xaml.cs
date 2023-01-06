@@ -55,6 +55,7 @@ namespace wfh_log_wpf
                 {
                     MainWindow = _host.Services.GetRequiredService<MainWindow>();
                     MainWindow.Closing += MainWindow_Closing;
+                    // check if it's the first run
                     MainWindow.Show();
                 } 
                 catch (Exception e)

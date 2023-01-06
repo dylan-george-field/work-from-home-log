@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Timers;
 using System.Windows;
 using wfh_log_wpf.Helper;
@@ -32,6 +33,9 @@ namespace wfh_log_wpf
             // lvDataBinding.ItemsSource = logReader.GetAggregateLogs();
 
             Closing += MainWindow_Closing;
+
+            var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
+            VersionTextBox.Text = "v" + productVersion;
 
             HomeNetworkTextbox.Text = settings.GetHomeNetworkString();
 

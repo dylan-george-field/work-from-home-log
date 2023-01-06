@@ -10,6 +10,15 @@
     <ApplicationIcon>Assets\house-apple.ico</ApplicationIcon>
     <PackageIcon>Assets/house.ico</PackageIcon>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Title>work from home logger</Title>
+    <Authors>Dylan George Field</Authors>
+    <Description> A windows app to log work from home hours for the Australian Tax Office (ATO).</Description>
+    <PackageProjectUrl>https://dylan-george-field.github.io/work-from-home-logger/</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/dylan-george-field/work-from-home-logger</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>taxation;ato;wfh;tax;productivity-tools;wifi-network;wpf-application</PackageTags>
+    <AssemblyVersion>0.5.2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +33,13 @@
     <EmbeddedResource Include="Assets\house-white.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

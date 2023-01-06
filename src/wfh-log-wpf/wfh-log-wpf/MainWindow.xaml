@@ -34,7 +34,7 @@
         </StackPanel>-->
         <DockPanel  Grid.Row="2">
             <!--<TextBlock Margin="3" HorizontalAlignment="Left" Foreground="SteelBlue" FontSize="10" Text="No logs"/>-->
-            <TextBlock Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="v0.4.0" />
+            <TextBlock Name="VersionTextBox" Margin="3" HorizontalAlignment="Right" Foreground="SteelBlue" FontSize="10" Text="unknown" />
         </DockPanel>
     </Grid>
 </Window>
