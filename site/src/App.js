@@ -26,8 +26,11 @@ function App() {
             Wiki
           </a>
         </span>
-        <p>Put it in the windows startup folder.</p>
+        <p>Place the wfh-log.exe in your startup folder.</p>
       </header>
+      <footer>
+        dylan.george.field@gmail.com
+      </footer>
     </div>
   );
 }
