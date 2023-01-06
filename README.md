@@ -1,7 +1,7 @@
-# work from home logger
+# work from home logbook
 Logs work from home hours for the Australian Tax Office (ATO).
 
-![The work from home log app](docs/example.png)
+![The work from home logbook app](docs/example.png)
 
 ## Installation
 This app only works on Windows.
