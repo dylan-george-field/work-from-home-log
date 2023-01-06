@@ -34,8 +34,9 @@ namespace wfh_log_wpf
 
             Closing += MainWindow_Closing;
 
-            var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-            VersionTextBox.Text = "v" + productVersion;
+            var appDirectory = AppContext.BaseDirectory + "wfh-log.exe";
+            var productVersion = FileVersionInfo.GetVersionInfo(appDirectory).ProductVersion;
+            VersionTextBox.Text = productVersion;
 
             HomeNetworkTextbox.Text = settings.GetHomeNetworkString();
 
