@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>work from home logbook</h1>
+        <h1>The work from home logbook app</h1>
         <img src={require("./example.png")} className="App-logo" alt="screenshot of wfh-log" />
         <p>
         A windows app to log work from home hours for taxation for government bodies 
