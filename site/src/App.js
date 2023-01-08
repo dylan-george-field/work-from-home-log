@@ -7,7 +7,8 @@ function App() {
         <h1>work from home logbook</h1>
         <img src={require("./example.png")} className="App-logo" alt="screenshot of wfh-log" />
         <p>
-          A windows app to log work from home hours for the Australian Tax Office (ATO).
+        A windows app to log work from home hours for taxation for government bodies 
+        like the Internal Revenue Service (IRS) or Australian Tax Office (ATO).
         </p>
         <span>
           <a 
