@@ -8,17 +8,12 @@ namespace wfh_log_wpf.Models
         public string ConnectedNetwork { get; set; }
         public bool IsWorkingFromHome { get; set; } = false;
 
+        public LogEntry() { } // for csv helper
+
         public LogEntry(bool isWorkingFromHome, string connectedNetwork)
         {
             IsWorkingFromHome = isWorkingFromHome;
             ConnectedNetwork = connectedNetwork;
-        }
-
-        public override string ToString()
-        {
-            var text = IsWorkingFromHome ? "You were working from home ✔" : "You were not working from home ❌";
-
-            return Time.ToLongDateString() + ": " + text;
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.IO;
-using System.Text.Encodings.Web;
-using System.Text.Json;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using wfh_log_wpf.Models;
 
 namespace wfh_log_wpf.Logger
@@ -13,15 +15,17 @@ namespace wfh_log_wpf.Logger
 
             _logs.Add(entry);
 
-            var options = new JsonSerializerOptions { Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HasHeaderRecord = false // don't write header again
+            };
 
-            var json = JsonSerializer.Serialize(entry, options);
-
-            var streamWriter = File.AppendText(AbsoluteFilePath);
-
-            streamWriter.WriteLine(json);
-
-            streamWriter.Dispose();
+            using (var stream = File.Open(AbsoluteFilePath, FileMode.Append))
+            using (var writer = new StreamWriter(stream))
+            using (var csv = new CsvWriter(writer, config))
+            {
+                csv.WriteRecords(new List<LogEntry>() { entry });
+            }
         }
     }
 }

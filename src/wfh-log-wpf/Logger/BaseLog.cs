@@ -8,7 +8,7 @@ namespace wfh_log_wpf.Logger
     public abstract class BaseLog
     {
         internal readonly string AbsoluteFilePath;
-        protected readonly List<LogEntry> _logs = new();
+        protected List<LogEntry> _logs = new();
 
         public BaseLog()
         {

@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualBasic;
+﻿using CsvHelper;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using wfh_log_wpf.Models;
 
 namespace wfh_log_wpf.Logger
@@ -13,15 +13,18 @@ namespace wfh_log_wpf.Logger
         {
             if (!File.Exists(AbsoluteFilePath))
             {
-                var filestream = File.Create(AbsoluteFilePath);
-                filestream.Dispose();
+                using (var writer = new StreamWriter(AbsoluteFilePath))
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteHeader<LogEntry>();
+                    csv.NextRecord();
+                }
             }
 
-            var lines = File.ReadAllLines(AbsoluteFilePath);
-
-            foreach (var line in lines)
+            using (var reader = new StreamReader(AbsoluteFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                _logs.Add(JsonSerializer.Deserialize<LogEntry>(line));
+                _logs = csv.GetRecords<LogEntry>().ToList();
             }
         }
 
