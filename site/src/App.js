@@ -15,7 +15,8 @@ function App() {
             className="App-link"
             href="https://github.com/dylan-george-field/work-from-home-logger/releases/latest/download/wfh-log.exe"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+            id="download">
               Download 
           </a>
            | 
@@ -30,7 +31,6 @@ function App() {
         <p>Place the wfh-log.exe in your startup folder.</p>
       </header>
       <footer>
-        
         <a href="https://www.georgefield.com.au/contact" rel="noreferrer" target="_blank">Send feedback</a>
       </footer>
     </div>
