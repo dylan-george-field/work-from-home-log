@@ -18,7 +18,7 @@
         <Border Grid.Row="1" Background="#2f5cb6" BorderThickness="1" BorderBrush="SteelBlue"/>
         <Border Grid.Row="2" Background="#2f5cb6" BorderThickness="0" BorderBrush="SteelBlue"/>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10,10,10,10">
-            <TextBox MinWidth="290" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="HomeNetworkTextbox" 
+            <TextBox Width="290" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="HomeNetworkTextbox" 
                      ToolTip="A semicolon separated list of SSIDs"/>
             <Button Name="SetHomeNetwork" Height="20" Width="125" Margin="5,0,0,0" Content="Set Home Network" Click="SetHomeNetworkButton_Click" />
         </StackPanel>
