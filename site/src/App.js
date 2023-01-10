@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>The work from home logbook app</h1>
-        <img src={require("./example.png")} className="App-logo" alt="screenshot of wfh-log" />
+        <img src={require("./wfh-log-animation.gif")} className="App-logo" alt="animation of the wfh-log app" />
         <p>
           Automatically log your work from home hours for tax purposes for government bodies like the 
           Internal Revenue Service (IRS) or Australian Tax Office (ATO).
