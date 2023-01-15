@@ -12,9 +12,7 @@ namespace wfh_log_wpf.Timer
             timer.AutoReset = true;
             timer.Enabled = true;
 
-            int minutes = DateTime.Now.Minute;
-            int adjust = 10 - minutes % 1;
-            timer.Interval = adjust * 60 * 1000;
+            timer.Interval = GetInterval();
         }
 
         public void Start()
@@ -22,9 +20,25 @@ namespace wfh_log_wpf.Timer
             timer.Start();
         }
 
+        public static double GetInterval()
+        {
+            var timeOfDay = DateTime.Now.TimeOfDay;
+            var roundedUpToHour = Math.Ceiling(timeOfDay.TotalHours);
+            var nextFullHour = TimeSpan.FromHours(roundedUpToHour);
+            var delta = (nextFullHour - timeOfDay).TotalMilliseconds;
+
+            return delta;
+        }
+
         public void AddHandler(ElapsedEventHandler function)
         {
             timer.Elapsed += function;
+            timer.Elapsed += ResetInterval;
+        }
+
+        private void ResetInterval(object? source, ElapsedEventArgs e)
+        {
+            timer.Interval = GetInterval();
         }
 
         public void Stop()
