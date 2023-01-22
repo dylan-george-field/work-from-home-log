@@ -1,18 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Windows;
 using wfh_log_wpf.Logger;
-using wfh_log_wpf.Models;
 using wfh_log_wpf.Settings;
 using wfh_log_wpf.Timer;
-using wfh_log_wpf.Uninstaller;
 
 namespace wfh_log_wpf
 {
@@ -114,7 +109,7 @@ namespace wfh_log_wpf
 
         private void OpenLogFile()
         {
-            var absoluteFilePath = BaseLog.GetLogPath();
+            var absoluteFilePath = BaseLog.GetLogFilePath();
 
             var processStartInfo = new ProcessStartInfo
             {
