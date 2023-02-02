@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using wfh_log_wpf.Logger;
 using wfh_log_wpf.Settings;
 using wfh_log_wpf.Timer;
@@ -80,6 +81,7 @@ namespace wfh_log_wpf
             _notifyIcon.ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip();
             _notifyIcon.ContextMenuStrip.Items.Add("Open").Click += (s, e) => ShowMainWindow();
             _notifyIcon.ContextMenuStrip.Items.Add("Open Log File").Click += (s, e) => OpenLogFile();
+            _notifyIcon.ContextMenuStrip.Items.Add(new System.Windows.Forms.ToolStripSeparator());
             _notifyIcon.ContextMenuStrip.Items.Add("Exit").Click += (s, e) => ExitApplication();
         }
  
