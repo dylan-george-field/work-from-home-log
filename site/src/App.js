@@ -6,14 +6,15 @@ function App() {
       <header className="App-header">
         <h1>The work from home logbook app</h1>
         <img 
-          alt="An animation showing how to set your home network in the work from home log book app"
+          alt="An animation showing how to set your home network in the work from home log book app."
           className="App-logo" 
           src={require("./wfh-log-animation.gif")}
         />
         <p>
           Automatically log your work from home hours by tracking your wifi network. Great for tax auditing for the
-          Australian Tax Office (ATO) or keeping hours for yourself or your boss!
+          Australian Tax Office (ATO) or keeping hours for workplace!
         </p>
+        <p>
         <span>
           <a 
             className="App-link"
@@ -21,7 +22,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
             id="download">
-              Download (Windows only)
+              Download 🪟
           </a>
            | 
           <a
@@ -32,10 +33,17 @@ function App() {
             Wiki
           </a>
         </span>
-        <p>Place the wfh-log.exe in your startup folder.</p>
+        </p>
+        <p>
+          <img 
+            alt="A screenshot of the wfh-log app in the windows taskbar."
+            src={require("./wfh-log-taskbar.png")}
+          />
+        </p>
+        <p>Place the wfh-log.exe in your startup folder 😉</p>
         <p>
         <img 
-           alt="A scrolling animation of the work from home log using microsoft notepad"
+           alt="A scrolling animation of the work from home log using microsoft notepad."
            src={require("./wfh-log-notepad.gif")}
            className="App-logo"
         />
