@@ -11,8 +11,8 @@ function App() {
           src={require("./wfh-log-animation.gif")}
         />
         <p>
-          Automatically log your work from home hours by tracking your wifi network. Great for tax auditing by the
-          Australian Tax Office (ATO) or keeping hours for your workplace!
+          Stay ATO compliant with the logbook app. Easily claim work-from-home deductions by automatically recording 
+          your WiFi network name hourly. Access the .csv log conveniently from the taskbar.
         </p>
         <p>
         <span>
