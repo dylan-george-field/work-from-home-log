@@ -5,10 +5,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>The work from home logbook app</h1>
-        <img src={require("./wfh-log-animation.gif")} className="App-logo" alt="animation of the wfh-log app" />
+        <img 
+          alt="An animation showing how to set your home network in the work from home log book app"
+          className="App-logo" 
+          src={require("./wfh-log-animation.gif")}
+        />
         <p>
-          Automatically log your work from home hours for tax purposes for government bodies like the 
-          Internal Revenue Service (IRS) or Australian Tax Office (ATO).
+          Automatically log your work from home hours by tracking your wifi network. Great for tax auditing for the
+          Australian Tax Office (ATO) or keeping hours for yourself or your boss!
         </p>
         <span>
           <a 
@@ -17,7 +21,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
             id="download">
-              Download 
+              Download (Windows only)
           </a>
            | 
           <a
@@ -29,6 +33,13 @@ function App() {
           </a>
         </span>
         <p>Place the wfh-log.exe in your startup folder.</p>
+        <p>
+        <img 
+           alt="A scrolling animation of the work from home log using microsoft notepad"
+           src={require("./wfh-log-notepad.gif")}
+           className="App-logo"
+        />
+        </p>
       </header>
       <footer>
         <a href="https://www.georgefield.com.au/contact" rel="noreferrer" target="_blank">Send feedback</a>
