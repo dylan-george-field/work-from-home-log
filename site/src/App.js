@@ -14,7 +14,9 @@ function App() {
           Stay Australian Tax Office (ATO) compliant. <br />
           <blockquote>
             <a href="https://www.ato.gov.au/Media-centre/Media-releases/ATO-announces-changes-to-working-from-home-deductions/"
-               target="_blank">
+               target="_blank"
+               rel="noreferrer"
+            >
             "Taxpayers need to keep a record of all the hours worked from home for the entire income year – the ATO won’t accept estimates, or a 4-week representative diary or similar document under this method from 1 March 2023"
             </a>
           </blockquote>
