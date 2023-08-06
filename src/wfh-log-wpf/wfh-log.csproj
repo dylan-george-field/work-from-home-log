@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/dylan-george-field/work-from-home-logger</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>taxation;ato;wfh;tax;productivity-tools;wifi-network;wpf-application</PackageTags>
-    <AssemblyVersion>0.5.2</AssemblyVersion>
+    <AssemblyVersion>0.6.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Media;
 
 namespace wfh_log_wpf.Settings
 {
-    public class HomeNetworkSettings
+    public class WorkNetworkSettings
     {
-        public List<string> HomeNetworks = new();
+        public List<string> WorkNetworks = new();
         internal readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
             + "\\wfh-log"; // duplicate with base log
         private const string filename = "settings.txt";
 
-        public HomeNetworkSettings()
+        public WorkNetworkSettings()
         {
             ReadHomeNetworksFromFile();
         }
@@ -28,24 +29,30 @@ namespace wfh_log_wpf.Settings
 
             var file = File.ReadAllText(path + "\\" + filename);
 
-            SetHomeNetworks(file);
+            SetWorkNetworks(file);
         }
 
-        public void SetHomeNetworks(string list)
+        public void SetWorkNetworks(string list)
         {
+            Clear();
             var networks = list.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
             foreach (var item in networks)
             {
-                HomeNetworks.Add(item);
+                WorkNetworks.Add(item);
             }
+        }
+
+        private void Clear()
+        {
+            WorkNetworks.Clear();
         }
 
         public string GetHomeNetworkString()
         {
             var stringBuilder = new StringBuilder();
 
-            foreach(var network in HomeNetworks)
+            foreach(var network in WorkNetworks)
             {
                 stringBuilder.Append(network);
                 stringBuilder.Append(';');

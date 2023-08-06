@@ -38,7 +38,7 @@ namespace wfh_log_wpf
                 services.AddSingleton<HourlyTimer>();
                 services.AddSingleton<LogReader>();
                 services.AddSingleton<LogWriter>();
-                services.AddSingleton<HomeNetworkSettings>();
+                services.AddSingleton<WorkNetworkSettings>();
             }).Build();
 
             using (var serviceScope = _host.Services.CreateScope())
