@@ -6,23 +6,26 @@ function App() {
       <header className="App-header">
         <h1>The work from home logbook app</h1>
         <img 
-          alt="An animation showing how to set your home network in the work from home log book app."
-          className="App-logo" 
-          src={require("./wfh-log-animation.gif")}
+           alt="A scrolling animation of the work from home log using microsoft notepad."
+           src={require("./wfh-log-notepad.gif")}
+           className="App-logo"
         />
         <p>
-          Stay Australian Tax Office (ATO) compliant. <br />
           <blockquote>
-            <a href="https://www.ato.gov.au/Media-centre/Media-releases/ATO-announces-changes-to-working-from-home-deductions/"
-               target="_blank"
-               rel="noreferrer"
+            <a 
+                className="App-link"
+                href="https://www.ato.gov.au/Media-centre/Media-releases/ATO-announces-changes-to-working-from-home-deductions/"
+                target="_blank"
+                rel="noreferrer"
             >
-            "Taxpayers need to keep a record of all the hours worked from home for the entire income year – the ATO won’t accept estimates, or a 4-week representative diary or similar document under this method from 1 March 2023"
+            "Taxpayers need to keep a record of all the hours worked from home for the entire income year – the Australian Tax Office (ATO) won’t accept estimates, or a 4-week representative diary or similar document under this method from 1 March 2023"
             </a>
           </blockquote>
           Automatically record your WiFi network hourly.
           <br />
           Claim with 100% accuracy.
+          <br />
+          Stay compliant.
         </p>
         <p>
         <span>
@@ -32,15 +35,15 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
             id="download">
-              Download 🪟
+              Download (Windows 🪟)
           </a>
            | 
           <a
            className="App-link"
-           href="https://github.com/dylan-george-field/work-from-home-logger/wiki"
+           href="https://github.com/dylan-george-field/work-from-home-logger"
            target="_blank"
            rel="noopener noreferrer">
-            Wiki
+            Source Code (GitHub)
           </a>
         </span>
         </p>
@@ -57,9 +60,9 @@ function App() {
           Paste the 'wfh-log.exe' into this folder <br />
         <p>
         <img 
-           alt="A scrolling animation of the work from home log using microsoft notepad."
-           src={require("./wfh-log-notepad.gif")}
-           className="App-logo"
+          alt="An animation showing how to set your home network in the work from home log book app."
+          className="App-logo" 
+          src={require("./wfh-log-animation.gif")}
         />
         </p>
       </header>
