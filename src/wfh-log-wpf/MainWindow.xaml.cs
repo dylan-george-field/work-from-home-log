@@ -30,8 +30,6 @@ namespace wfh_log_wpf
 
             InitializeComponent();
 
-            // lvDataBinding.ItemsSource = logReader.GetAggregateLogs();
-
             Closing += MainWindow_Closing;
 
             var appDirectory = AppContext.BaseDirectory + "wfh-log.exe";
@@ -44,18 +42,7 @@ namespace wfh_log_wpf
 
             ConnectedNetworkSsid.Text = currentNetwork;
 
-            if (_settings.WorkNetworks.Contains(currentNetwork.ToString()))
-            {
-                var message = "You are working from home";
-                WorkFromHomeStatus.Text = message;
-                _logger.Log(isWorkingFromHome: true, currentNetwork);
-            }
-            else
-            {
-                var message = "You are not working from home";
-                WorkFromHomeStatus.Text = message;
-                _logger.Log(isWorkingFromHome: false, currentNetwork);
-            }
+            Dispatch_IsWorkingFromHome_Message(_settings.WorkNetworks.Contains(currentNetwork.ToString()));
 
             timer.AddHandler(HandleTimer);
         }
@@ -66,20 +53,7 @@ namespace wfh_log_wpf
 
             Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork.ToString());
 
-            if (_settings.WorkNetworks.Contains(currentNetwork.ToString()))
-            {
-                var message = "You are working from home";
-                Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: true, currentNetwork);
-            }
-            else
-            {
-                var message = "You are not working from home";
-                Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
-                _logger.Log(isWorkingFromHome: false, currentNetwork);
-            }
-
-
+            Dispatch_IsWorkingFromHome_Message(_settings.WorkNetworks.Contains(currentNetwork.ToString()));
         }
 
         private void SetWorkNetworkButton_Click(object? source, RoutedEventArgs args)
@@ -96,12 +70,19 @@ namespace wfh_log_wpf
 
             File.WriteAllText(path + "\\" + filename, WorkNetworkTextbox.Text);
             _settings.SetWorkNetworks(WorkNetworkTextbox.Text);
-            // re-run
+            
             var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();
 
             Dispatcher.Invoke(() => ConnectedNetworkSsid.Text = currentNetwork);
 
-            if (_settings.WorkNetworks.Contains(currentNetwork.ToString()))
+            Dispatch_IsWorkingFromHome_Message(_settings.WorkNetworks.Contains(currentNetwork.ToString()));
+        }
+
+        private void Dispatch_IsWorkingFromHome_Message(bool isWorkingFromHome)
+        {
+            var currentNetwork = NetworkHelper.GetConnectedNetworkSsid();
+
+            if (isWorkingFromHome)
             {
                 var message = "You're at the office 🏢";
                 Dispatcher.Invoke(() => WorkFromHomeStatus.Text = message);
