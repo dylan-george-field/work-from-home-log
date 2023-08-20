@@ -17,14 +17,16 @@ namespace wfh_log_wpf.Logger
 
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                HasHeaderRecord = false // don't write header again
+                HasHeaderRecord = false, // don't write the header twice
+                ShouldQuote = (args) => false
             };
 
             using (var stream = File.Open(AbsoluteFilePath, FileMode.Append))
             using (var writer = new StreamWriter(stream))
             using (var csv = new CsvWriter(writer, config))
             {
-                csv.WriteRecords(new List<LogEntry>() { entry });
+                var prettyEntry = new LogEntryPretty(entry);
+                csv.WriteRecords(new List<LogEntryPretty>() { prettyEntry });
             }
         }
     }
