@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>The work from home logbook app</h1>
+        <h1>work from home logbook app</h1>
         <img 
            alt="A scrolling animation of the work from home log using microsoft notepad."
            src={require("./wfh-log-notepad.gif")}
