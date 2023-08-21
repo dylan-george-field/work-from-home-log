@@ -7,7 +7,7 @@ function App() {
         <h1>work from home log</h1>
         <img 
            alt="A scrolling animation of the work from home log using microsoft notepad."
-           src={require("./wfh-log-notepad.gif")}
+           src={require("./wfh-log-demo.gif")}
            className="App-logo"
         />
         <p>
