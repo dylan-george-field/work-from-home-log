@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>work from home log</h1>
-        <p className="Sub-heading">Automatically record your WiFi network hourly</p>
+        <p className="No-margin-top">Automatically record your WiFi network hourly</p>
         <img 
            alt="A scrolling animation of the work from home log using microsoft notepad."
            src={require("./wfh-log-demo.gif")}
@@ -44,7 +44,7 @@ function App() {
         </span>
         </p>
         <h2>Installation instructions ✅</h2>
-        <p>
+        <p className="No-margin-top">
           Download the app <br />
           Press 'Windows + R' <br />
           Type 'shell:startup' and hit OK <br />
