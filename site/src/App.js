@@ -5,12 +5,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>work from home log</h1>
+        <p className="Sub-heading">Automatically record your WiFi network hourly</p>
         <img 
            alt="A scrolling animation of the work from home log using microsoft notepad."
            src={require("./wfh-log-demo.gif")}
            className="App-logo"
         />
-        <p>
           <blockquote>
             <a 
                 className="App-link"
@@ -18,15 +18,11 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
             >
-            "Taxpayers need to keep a record of all the hours worked from home for the entire income year – the Australian Tax Office (ATO) won’t accept estimates, or a 4-week representative diary or similar document under this method from 1 March 2023"
+            "Taxpayers need to keep a record of all the hours worked from home for the entire income year – the Australian Tax Office (ATO) won’t accept estimates"
             </a>
           </blockquote>
-          Automatically record your WiFi network hourly.
+          
           <br />
-          Claim with 100% accuracy.
-          <br />
-          Stay compliant.
-        </p>
         <p>
         <span>
           <a 
@@ -47,23 +43,12 @@ function App() {
           </a>
         </span>
         </p>
+        <h2>Installation instructions ✅</h2>
         <p>
-          <img 
-            alt="A screenshot of the wfh-log app in the windows taskbar."
-            src={require("./wfh-log-taskbar.png")}
-          />
-        </p>
-        <p>Installation instructions ✅</p>
           Download the app <br />
           Press 'Windows + R' <br />
           Type 'shell:startup' and hit OK <br />
           Paste the 'wfh-log.exe' into this folder <br />
-        <p>
-        <img 
-          alt="An animation showing how to set your home network in the work from home log book app."
-          className="App-logo" 
-          src={require("./wfh-log-animation.gif")}
-        />
         </p>
       </header>
       <footer>

@@ -30,6 +30,15 @@
   margin: 10px;
 }
 
+.Sub-heading {
+  margin-top: 0;
+}
+
+blockquote {
+  font-size: calc(10px + 1vmin);
+  padding: 0 20%;
+}
+
 footer {
   background-color: #282c34;
   color: gray;
