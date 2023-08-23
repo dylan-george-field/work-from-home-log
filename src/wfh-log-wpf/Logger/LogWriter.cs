@@ -17,7 +17,7 @@ namespace wfh_log_wpf.Logger
 
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                HasHeaderRecord = false, // don't write the header twice
+                HasHeaderRecord = false,
                 ShouldQuote = (args) => false
             };
 

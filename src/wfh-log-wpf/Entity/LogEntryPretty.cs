@@ -15,11 +15,9 @@ namespace wfh_log_wpf.Models
 
         public LogEntryPretty(LogEntry entry)
         {
-            IsWorkingFromHome = entry.IsWorkingFromHome 
-                                ? " " + entry.IsWorkingFromHome.ToString() + " "
-                                : " " + entry.IsWorkingFromHome.ToString();
-            ConnectedNetwork = " " + entry.ConnectedNetwork.ToString();
             Time = entry.Time;
+            IsWorkingFromHome = "\t" + entry.IsWorkingFromHome.ToString();
+            ConnectedNetwork = "\t\t\t" + entry.ConnectedNetwork.ToString();
         }
     }
 }
