@@ -23,7 +23,7 @@ namespace wfh_log_wpf.Logger
                 using (var writer = new StreamWriter(AbsoluteFilePath))
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
-                    writer.WriteLine("Time\t\t\tIsWorkingFromHome\tNetwork");
+                    writer.WriteLine("Time                       IsWorkingFromHome       Network");
                 }
             } 
             else
