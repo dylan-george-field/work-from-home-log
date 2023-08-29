@@ -1,7 +1,7 @@
-# work from home logbook
-The wfh-log is a Windows app that records your wifi network each hour.
+# work from home log
+Log your WiFi network hourly ⌚
 
-An 4-week audit log is required by the Australian Tax Office (ATO) to claim work from home expenses in 2022-2023.
+Needed to claim work from home tax deductions from the Australian Tax Office (ATO).
 
 ![The work from home logbook app](docs/example.png)
 
