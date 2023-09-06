@@ -32,7 +32,7 @@ function App() {
         <h2>Installation instructions ✅</h2>
           <ol className="no-margin-top no-list">
             <li>Download the app</li>
-            <li>Start 'run' ('Windows + R')</li>
+            <li>Open 'run' app ('Windows + R')</li>
             <li>Type 'shell:startup' and hit OK</li>
             <li>Paste the 'wfh-log.exe' into this folder</li>
           </ol>
